@@ -1,0 +1,36 @@
+def diagonal_sum(items):
+    """
+    the function returns the sum of diagonal elements of a 2D list. 
+    first sum should be the sum of diagonal elements from left top to right bottom 
+    and the second sum should be the sum of other diagonal, from bottom left to top right. 
+    eg: 
+    input: matrix = [
+        [9, 13, 5, 2], 
+        [1, 11, 7, 6], 
+        [3, 7, 4, 1], 
+        [6, 0, 7, 10]
+    ]
+    output: diagonal_sum(matrix) -> [34, 22]
+    """
+    diag_list = []
+    count = 0
+    #Left to Right Diagonal
+    for i in range(len(items)):
+        for j in range(i, len(items[i])):
+            if i == 0:
+                count += items[0][0]
+                break
+            else:
+                count += items[i][j]
+                break
+    diag_list.append(count)
+    count = 0
+    #Right to Left Diagonal
+    for i in range(len(items)):
+      for j in range(len(items[i]) - 1, -1, -1):
+        count += items[i][j - i]
+        break
+    diag_list.append(count)
+    
+    return diag_list
+    
